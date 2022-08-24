@@ -8,18 +8,30 @@
 import UIKit
 
 
-class Delegat:UIButton {
-  
-
+class New:UIView {
+    
+    var action: ((UIButton) -> ())?
+    @IBOutlet weak var button1: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backgroundColor = .orange
+        button1.backgroundColor = .gray
+       
     }
-
-
+    
+    @IBAction func someAction(_ sender: UIButton) {
+        action?(button1)
+        backgroundColor = .darkGray
+    }
+    
+}
 
 class SecondViewController: UIViewController {
  
-    var changeColor: (() -> ())?
-    
-    var view1 = UIView(frame: CGRect(x:0, y: 0, width: 400, height: 400))
+    @IBOutlet weak var view2: New!
+   
     let buttonUp = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
     let buttonDown = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
     let buttonLeft =  UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
@@ -29,13 +41,11 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(view1)
-        view1.backgroundColor = .orange
-        view1.center = view.center
-        view1.addSubview(buttonUp)
-        view1.addSubview(buttonDown)
-        view1.addSubview(buttonLeft)
-        view1.addSubview(buttonRight)
+        view2.center = view.center
+        view2.addSubview(buttonUp)
+        view2.addSubview(buttonDown)
+        view2.addSubview(buttonLeft)
+        view2.addSubview(buttonRight)
 
         view.addSubview(button)
         button.backgroundColor = .systemIndigo
@@ -51,44 +61,47 @@ class SecondViewController: UIViewController {
 
         
         buttonUp.translatesAutoresizingMaskIntoConstraints = false
-        buttonUp.centerXAnchor.constraint(equalTo:view1.centerXAnchor).isActive =  true
-        buttonUp.topAnchor.constraint(equalTo: view1.topAnchor, constant: 20).isActive = true
+        buttonUp.centerXAnchor.constraint(equalTo:view2.centerXAnchor).isActive =  true
+        buttonUp.topAnchor.constraint(equalTo: view2.topAnchor, constant: 20).isActive = true
         buttonUp.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        buttonUp.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        buttonUp.layer.cornerRadius = 10
 
         buttonDown.translatesAutoresizingMaskIntoConstraints = false
-        buttonDown.centerXAnchor.constraint(equalTo:view1.centerXAnchor).isActive =  true
-        buttonDown.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: -20).isActive = true
+        buttonDown.centerXAnchor.constraint(equalTo:view2.centerXAnchor).isActive =  true
+        buttonDown.bottomAnchor.constraint(equalTo: view2.bottomAnchor, constant: -20).isActive = true
         buttonDown.widthAnchor.constraint(equalToConstant: 60).isActive = true
-//        buttonUp.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        buttonDown.layer.cornerRadius = 10
 
         buttonLeft.translatesAutoresizingMaskIntoConstraints = false
-        buttonLeft.centerYAnchor.constraint(equalTo: view1.centerYAnchor).isActive =  true
-        buttonLeft.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        buttonLeft.centerYAnchor.constraint(equalTo: view2.centerYAnchor).isActive =  true
+        buttonLeft.leftAnchor.constraint(equalTo: view2.leftAnchor, constant: 20).isActive = true
         buttonLeft.widthAnchor.constraint(equalToConstant: 60).isActive = true
-//       buttonUp.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        buttonLeft.layer.cornerRadius = 10
 
         buttonRight.translatesAutoresizingMaskIntoConstraints = false
-        buttonRight.centerYAnchor.constraint(equalTo:view1.centerYAnchor).isActive =  true
-        buttonRight.rightAnchor.constraint(equalTo: view1.rightAnchor, constant: -20).isActive = true
+        buttonRight.centerYAnchor.constraint(equalTo:view2.centerYAnchor).isActive =  true
+        buttonRight.rightAnchor.constraint(equalTo: view2.rightAnchor, constant: -20).isActive = true
         buttonRight.widthAnchor.constraint(equalToConstant: 60).isActive = true
-//        buttonUp.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
-        
-        
+        buttonRight.layer.cornerRadius = 10
+         
+        view2.action = {[weak self] button1 in
+            self?.someAction(button1)
+      
+            }
         }
 
-@objc func buttonTap (_ sender:UIButton){
+    @objc func buttonTap (_ sender:UIButton) {
      
     dismiss(animated: true)
     
     }
 
-    @objc func buttonAction (_ sender:UIButton){
-         
-        changeColor?()
+    func someAction(_ sender: UIButton) {
         
-        }
+     print ("Action is true")
+        
+    }
+  
  
 }
     

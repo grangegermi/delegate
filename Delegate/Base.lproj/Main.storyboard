@@ -69,8 +69,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="buttonAction:" destination="wAh-Je-cGR" eventType="touchUpInside" id="mSy-SF-JQt"/>
-                                    <action selector="buttonAction:" destination="eaE-Ko-G7e" eventType="touchUpInside" id="wNh-Qk-knE"/>
+                                    <action selector="buttonActionDelegate:" destination="wAh-Je-cGR" eventType="touchUpInside" id="MJC-qx-2wP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -88,29 +87,70 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="eaE-Ko-G7e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="20" y="67"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="Vmz-WZ-lbC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h0O-30-zZw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SecondViewController" id="6BR-Ji-yZN" customClass="SecondViewController" customModule="Delegate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vbh-25-DKC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnc-pS-cxq" customClass="New" customModule="Delegate" customModuleProvider="target">
+                                <rect key="frame" x="7" y="253" width="400" height="400"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twP-Up-DFN">
+                                        <rect key="frame" x="166.5" y="185" width="67" height="30"/>
+                                        <color key="backgroundColor" red="0.45726909869999999" green="0.86078917980000003" blue="0.81025161850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="63u-Gm-nMh"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="someAction:" destination="m6B-er-CLF" eventType="touchUpInside" id="Fsj-Fe-UPO"/>
+                                            <action selector="someAction:" destination="hnc-pS-cxq" eventType="touchUpInside" id="uxE-zY-aI1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="3l3-cn-ETl"/>
+                                    <constraint firstItem="twP-Up-DFN" firstAttribute="centerY" secondItem="hnc-pS-cxq" secondAttribute="centerY" id="DNA-o1-5PL"/>
+                                    <constraint firstAttribute="width" constant="400" id="EdO-Fm-50J"/>
+                                    <constraint firstItem="twP-Up-DFN" firstAttribute="centerX" secondItem="hnc-pS-cxq" secondAttribute="centerX" id="yEh-Ug-hhq"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="button1" destination="twP-Up-DFN" id="E9S-Id-nhx"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="x1R-El-XvW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hnc-pS-cxq" firstAttribute="centerY" secondItem="x1R-El-XvW" secondAttribute="centerY" id="RwZ-0l-70Z"/>
+                            <constraint firstItem="hnc-pS-cxq" firstAttribute="centerX" secondItem="x1R-El-XvW" secondAttribute="centerX" id="a8u-pD-kU8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="view2" destination="hnc-pS-cxq" id="XMR-u1-oTZ"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0O-30-zZw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="m6B-er-CLF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="67"/>
+            <point key="canvasLocation" x="1013.0434782608696" y="66.964285714285708"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
