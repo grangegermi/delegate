@@ -64,7 +64,8 @@ class ViewController: UIViewController, BackroundDelegate {
    
     func buttonActionDelegate(_ sender: UIButton) {
       
-        print (" cool")
+        print ("cool")
+        
         
     }
 }

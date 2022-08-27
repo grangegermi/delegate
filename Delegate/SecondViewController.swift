@@ -23,7 +23,7 @@ class New:UIView {
     
     @IBAction func someAction(_ sender: UIButton) {
         action?(button1)
-        backgroundColor = .darkGray
+//        backgroundColor = .darkGray
     }
     
 }
@@ -98,7 +98,11 @@ class SecondViewController: UIViewController {
 
     func someAction(_ sender: UIButton) {
         
-     print ("Action is true")
+    print ("Action is true")
+        buttonUp.backgroundColor = .darkGray
+        buttonDown.backgroundColor = .darkGray
+        buttonLeft.backgroundColor = .darkGray
+        buttonRight.backgroundColor = .darkGray
         
     }
   
